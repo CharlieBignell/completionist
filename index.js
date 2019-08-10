@@ -13,7 +13,10 @@ app.use(express.static(__dirname + '/public'));
 let tasks = ["active task"]
 let completed = ["finished task"]
 
-// POST methods
+/*-------------------
+|   POST methods    |
+-------------------*/
+
 app.post('/addtask', function (req, res) {
     let newTask = req.body.newtask
     if (newTask.toString().length > 0) { tasks.push(newTask) }
@@ -32,7 +35,9 @@ app.post("/removeTask", function (req, res) {
 });
 
 
-// GET methods
+/*-------------------
+|   GET methods    |
+-------------------*/
 app.get("/", function (req, res) {
     res.render("index", { tasks: tasks, completed: completed })
 });
