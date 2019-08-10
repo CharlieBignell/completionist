@@ -1,0 +1,22 @@
+block content
+	head
+		title Completionist
+	body
+		h1 Completionist
+		#allTasks
+			form#addForm(action='addTask', method='POST')
+				input(type='text', name='newtask', placeholder='add new task', autofocus='')
+				button Add
+
+			#taskList_active
+			#taskList_completed
+
+block append readyscripts
+	script.
+		const tasks_active = !{ JSON.stringify(tasks) }
+		const tasks_complete = !{ JSON.stringify(completed) }
+
+block append scripts
+	link(href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet")
+	link(rel='stylesheet', href='/stylesheets/main.css')
+	script(type='application/javascript', src='/js/main.js')
