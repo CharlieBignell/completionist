@@ -1,6 +1,4 @@
 #tasks{
-    width: min-content;
-    width: 70%;
     display: flex;
     flex-flow: column nowrap;
     flex-grow: 1;
@@ -27,12 +25,8 @@
     margin: 5px 0;
 }
 
-#addForm{
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 20px;
-}
+
 
 #taskList_active, #taskList_completed{
-    margin: 10px;
+    margin: 0 20px;
 }

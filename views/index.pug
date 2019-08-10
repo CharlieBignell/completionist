@@ -4,13 +4,17 @@ block content
 	body
 		#header
 			h1#title Completionist
-		#tasks
-			form#addForm(action='addTask', method='POST')
-				input(type='text', name='newtask', placeholder='add new task', autofocus='')
+
+		#form
+			form(action='addTask', method='POST')
+				input#focus(type='text', name='name', placeholder='name', autofocus='')
+				input#sub(type='text', name='sub', placeholder='description')
 				button Add
 
+		#tasks
 			#taskList_active
 			#taskList_completed
+
 		#footer
 			p Copyright © 2019 Charlie Bignell
 
@@ -23,7 +27,13 @@ block append readyscripts
 
 block append scripts
 	link(href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet")
+
 	link(rel='stylesheet', href='/stylesheets/main.css')
+
+	//- These are separated into different files to make it all easier to manage and understand
 	link(rel='stylesheet', href='/stylesheets/tasklist.css')
 	link(rel='stylesheet', href='/stylesheets/header.css')
+	link(rel='stylesheet', href='/stylesheets/form.css')
+	link(rel='stylesheet', href='/stylesheets/footer.css')
+
 	script(type='application/javascript', src='/js/main.js')

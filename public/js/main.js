@@ -6,8 +6,8 @@ let taskList_completed = document.getElementById('taskList_completed')
 let allTasks = []
 
 // Populate allTasks
-tasks_active.forEach(function(task){    allTasks.push({ name: task, complete: false }) })
-tasks_complete.forEach(function(task){  allTasks.push({ name: task, complete: true }) })
+tasks_active.forEach(function(task){    allTasks.push({ name: task.name, sub: task.sub, complete: false }) })
+tasks_complete.forEach(function(task){  allTasks.push({ name: task.name, sub: task.sub, complete: true }) })
 
 
 allTasks.forEach(function(task){
@@ -17,7 +17,7 @@ allTasks.forEach(function(task){
 
     // Set the task text
     let text = document.createElement('p')
-    text.innerHTML = task.name
+    text.innerHTML = task.name + " - " + task.sub
 
     // Set the style of the task
     task.complete ? text.classList.add('completedTask') : text.classList.add('activeTask')
@@ -32,12 +32,12 @@ allTasks.forEach(function(task){
         let xhr = new XMLHttpRequest();
         xhr.open("POST", url, true)
         xhr.setRequestHeader('Content-Type', 'application/json')
-        xhr.send(JSON.stringify({ task: task.name }))
+        xhr.send(JSON.stringify({ name: task.name }))
 
         location.reload()
     })
 
     // Add the task to the list
     task_el.appendChild(text)
-    taskList_active.appendChild(task_el)
+    task.complete ? taskList_completed.appendChild(task_el) : taskList_active.appendChild(task_el)
 })

@@ -9,17 +9,7 @@ body{
     margin: 0;
 }
 
-#footer{
-    width: 70%;
-    text-align: center;
-    padding-bottom: 5px;
-}
-
-#footer > p {
-    margin: 0;
-    color: grey;
-}
-
-#tasks, #header, #footer{
+#tasks, #header, #form, #footer{
     background-color: white;
+    width: 70%;
 }

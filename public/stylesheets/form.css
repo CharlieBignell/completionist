@@ -1,0 +1,11 @@
+#form > form{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 20px;
+    border-bottom: 1px solid lightgrey;
+    justify-content: space-between;
+}
+
+#focus, #sub{
+    flex-grow: 1;
+}

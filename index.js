@@ -10,28 +10,48 @@ app.set('view engine', 'pug')
 
 app.use(express.static(__dirname + '/public'));
 
-let tasks = ["active task"]
-let completed = ["finished task"]
+let active = [{ name: "active task", sub: "description" }]
+let completed = [{ name: "completed task", sub: "description" }]
 
 /*-------------------
 |   POST methods    |
 -------------------*/
 
 app.post('/addtask', function (req, res) {
-    let newTask = req.body.newtask
-    if (newTask.toString().length > 0) { tasks.push(newTask) }
+    let name = req.body.name
+    let sub = req.body.sub
+    if (name.toString().length > 0) {
+        active.push({
+            name: name,
+            sub: sub
+        })
+    }
     res.redirect("/")
 });
 
 app.post("/completeTask", function (req, res) {
-    let task = req.body.task
-    completed.push(task);
-    tasks.splice(tasks.indexOf(task), 1);
+    let name = req.body.name
+
+    // Find the task
+    active.forEach(function (task) {
+        if (task.name == name) {
+            // Add to completed and remove from active
+            completed.push(task)
+            active.splice(active.indexOf(task), 1)
+        }
+    })
 });
 
 app.post("/removeTask", function (req, res) {
-    let task = req.body.task
-    completed.splice(tasks.indexOf(task), 1);
+    let name = req.body.name
+
+    // Find the task
+    completed.forEach(function (task) {
+        if (task.name == name) {
+            // Remove the task
+            completed.splice(completed.indexOf(task), 1)
+        }
+    })
 });
 
 
@@ -39,7 +59,7 @@ app.post("/removeTask", function (req, res) {
 |   GET methods    |
 -------------------*/
 app.get("/", function (req, res) {
-    res.render("index", { tasks: tasks, completed: completed })
+    res.render("index", { tasks: active, completed: completed })
 });
 
 
