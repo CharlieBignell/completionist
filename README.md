@@ -1,11 +1,5 @@
 # Completionist
 
-I've never found a calendar or to-do list app that I ever stuck with. I have a list of very simple requirements, but every app I've used is either too complex or too simple. 
-
-This application will combine a to-do list app with a calendar one.
-
-Please remember this is an app I am building for myself, therefore I am making litle effort at this stage to add customisability to appeal to a wider audience - but if it goes well then I may do this.
-
 ## The key requirements are as follows:
 
 ### Calendar app
